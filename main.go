@@ -129,7 +129,7 @@ func main() {
 			rCfnTotal := listCfn(region, verbose)
 			if rCfnTotal > 0 {
 				logs.WithFields(logs.Fields{
-					"CFN":    rCfnTotal,
+					"Stacks": rCfnTotal,
 					"Region": region,
 				}).Info(msg("CFN"))
 			}
@@ -148,7 +148,7 @@ func main() {
 
 	wg.Wait()
 	logs.WithFields(logs.Fields{
-		"S3":                s3Number,
+		"S3Buckets":         s3Number,
 		"EC2":               totalEC2Number,
 		"EC2Running":        totalEC2RunningNumber,
 		"EC2RunningWindows": totalEC2RunningWindowsNumber,
@@ -159,6 +159,6 @@ func main() {
 		"RDS_MySQL":         totalMyRdsNumber,
 		"RDS_MSSQL":         totalMsRdsNumber,
 		"Lambda":            totalLambdaNumber,
-		"CFN":               totalCfnNumber,
+		"Stacks":            totalCfnNumber,
 	}).Info("Account overview data")
 }
