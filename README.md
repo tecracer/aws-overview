@@ -27,9 +27,9 @@ AWS Credentials expected in ``$HOME/.aws/credentials`` or as environment variabl
 ```
 Usage: aws-overview [-h] [-log-file=path] [-daemon=true] [-repeat-every=60] [other options]
  -h, --help
- -daemon=false/true: [bool], Run as daemon. Default value is 'false'
- -repeat-every=<INT>: Repeat period in seconds. Used only in daemon mode. Default value is 180
- -log-file=<PATH>: Log file location, if skipped logs to STDOUT
- -verbose=true/false: [bool], if true prints details information about objects
+ -daemon=false/true:           [bool], Run as daemon. Default value is 'false'
+ -repeat-every=<INT>:          Repeat period in seconds. Used only in daemon mode. Default value is 180
+ -log-file=<PATH>:             Log file location, if skipped logs to STDOUT
+ -verbose=true/false:          [bool], if true prints details information about objects
  -machine-readable=true/false: [bool], if true convert output to Logstash format, false print json output
 ```
