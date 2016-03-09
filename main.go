@@ -178,7 +178,9 @@ func main() {
 				log.Print("Exiting!")
 				os.Exit(0)
 			}
-			log.Printf("Sleeping for %d", repeat)
+			if verbose {
+				log.Printf("Sleeping for %d", repeat)
+			}
 			time.Sleep(time.Duration(repeat) * time.Second)
 		}
 	}()
