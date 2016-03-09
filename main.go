@@ -39,7 +39,7 @@ var wg sync.WaitGroup
 
 func init() {
 	flag.BoolVar(&verbose, "verbose", false, "Show detailed output")
-	flag.BoolVar(&daemon, "daemon", false, "Show detailed output")
+	flag.BoolVar(&daemon, "daemon", false, "Run as daemon")
 	flag.IntVar(&repeat, "repeat-every", 180, "Repeat period in seconds")
 	flag.BoolVar(&machineReadable, "machine-readable", false, "Machine-readable output")
 	flag.StringVar(&logfile, "log-file", "", "Log file location")
