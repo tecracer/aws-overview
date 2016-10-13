@@ -10,7 +10,7 @@ import (
 	"time"
 
 	logs "github.com/Sirupsen/logrus"
-	logstash "github.com/Sirupsen/logrus/formatters/logstash"
+	"github.com/Sirupsen/logrus/formatters/logstash"
 )
 
 var (
