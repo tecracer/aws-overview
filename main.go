@@ -2,14 +2,15 @@ package main
 
 import (
 	"flag"
-	logs "github.com/Sirupsen/logrus"
-	logstash "github.com/Sirupsen/logrus/formatters/logstash"
 	"log"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
 	"time"
+
+	logs "github.com/Sirupsen/logrus"
+	logstash "github.com/Sirupsen/logrus/formatters/logstash"
 )
 
 var (
@@ -23,7 +24,7 @@ var (
 		"ap-northeast-1",
 		"sa-east-1",
 	}
-	verbose, machineReadable, daemon                                     bool
+	verbose, daemon                                                      bool
 	repeat                                                               int
 	logfile                                                              string
 	s3Number                                                             int
@@ -41,14 +42,9 @@ func init() {
 	flag.BoolVar(&verbose, "verbose", false, "Show detailed output")
 	flag.BoolVar(&daemon, "daemon", false, "Run as daemon")
 	flag.IntVar(&repeat, "repeat-every", 180, "Repeat period in seconds")
-	flag.BoolVar(&machineReadable, "machine-readable", false, "Machine-readable output")
 	flag.StringVar(&logfile, "log-file", "", "Log file location")
 	flag.Parse()
-	if machineReadable {
-		logs.SetFormatter(&logstash.LogstashFormatter{Type: "aws_overview", TimestampFormat: time.RFC822})
-	} else {
-		logs.SetFormatter(&logs.JSONFormatter{TimestampFormat: time.RFC822})
-	}
+	logs.SetFormatter(&logstash.LogstashFormatter{Type: "aws_overview", TimestampFormat: time.RFC822})
 }
 
 func main() {

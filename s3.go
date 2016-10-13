@@ -16,12 +16,12 @@ func listS3(region string, verbose bool) (number int, err error) {
 		return bucketNumber, err
 	}
 
-	if verbose && !machineReadable {
+	if verbose {
 		log.Println("Buckets:")
 	}
 	for _, bucket := range result.Buckets {
 		bucketNumber++
-		if verbose && !machineReadable {
+		if verbose {
 			log.Printf("%s : %s\n", aws.StringValue(bucket.Name), bucket.CreationDate)
 		}
 	}

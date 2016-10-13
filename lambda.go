@@ -25,7 +25,7 @@ func listLambda(region string, verbose bool) (lambdaNumber int) {
 			log.Fatal("Cannot get Lambda data: ", err)
 		}
 
-		if verbose && !machineReadable {
+		if verbose {
 			for _, name := range resp.Functions {
 				log.Println("Lambda Name: ", *name.FunctionName)
 			}

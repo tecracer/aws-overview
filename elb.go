@@ -25,7 +25,7 @@ func listElb(region string, verbose bool) (elbNumber, elbWithoutEC2 int) {
 		if len(name.Instances) == 0 {
 			elbWithoutEC2++
 		}
-		if verbose && !machineReadable {
+		if verbose {
 			log.Println("ELB Name: ", *name.LoadBalancerName)
 			if len(name.Instances) == 0 {
 				log.Println("--> NO Instances are associated with this ELB")

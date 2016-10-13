@@ -33,7 +33,7 @@ func listCfn(region string, verbose bool) (cfnNumber int) {
 		log.Fatal("Cannot get CFN data: ", err)
 	}
 
-	if verbose && !machineReadable {
+	if verbose {
 		for _, name := range resp.StackSummaries {
 			log.Println("CFN Stack Name: ", *name.StackName, " Status: ", *name.StackStatus)
 		}

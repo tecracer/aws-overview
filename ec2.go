@@ -26,7 +26,7 @@ func listEC2(region string, verbose bool) (ec2Number, ec2RunningNumber, ec2Runni
 					ec2RunningWindows++
 				}
 			}
-			if verbose && !machineReadable {
+			if verbose {
 				log.Println("Instance ID: ", *inst.InstanceId)
 				for _, tag := range inst.Tags {
 					if *tag.Key == "Name" {

@@ -30,7 +30,7 @@ func listRds(region string, verbose bool) (rdsNumber, rdsOracleNumber, rdsMysqlN
 		case strings.Contains(*name.Engine, "sqlserver"):
 			rdsMSsqlNumber++
 		}
-		if verbose && !machineReadable {
+		if verbose {
 			log.Println("RDS Name: ", *name.DBInstanceIdentifier, " created: ", *name.InstanceCreateTime)
 			log.Println("RDS Size: ", *name.DBInstanceClass)
 			log.Println("RDS Engine: ", *name.Engine)
