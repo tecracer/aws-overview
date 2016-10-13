@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/partamonov/aws-overview/branches/master/badge.svg)](https://semaphoreci.com/partamonov/aws-overview)
+
 # aws-overview
 
 ``aws-overview`` is a small script to get AWS account overview.
