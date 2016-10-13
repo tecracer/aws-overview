@@ -10,7 +10,6 @@ import (
 	"time"
 
 	logs "github.com/Sirupsen/logrus"
-	"github.com/Sirupsen/logrus/formatters/logstash"
 )
 
 var (
@@ -44,7 +43,7 @@ func init() {
 	flag.IntVar(&repeat, "repeat-every", 180, "Repeat period in seconds")
 	flag.StringVar(&logfile, "log-file", "", "Log file location")
 	flag.Parse()
-	logs.SetFormatter(&logstash.LogstashFormatter{Type: "aws_overview", TimestampFormat: time.RFC822})
+	logs.SetFormatter(&logs.JSONFormatter{TimestampFormat: time.RFC822})
 }
 
 func main() {
