@@ -1,4 +1,4 @@
-module github.com/partamonov/aws-overview
+module github.com/tecracer/aws-overview
 
 go 1.12
 
