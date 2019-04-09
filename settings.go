@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	logs "github.com/Sirupsen/logrus"
+	logs "github.com/sirupsen/logrus"
 	"log"
 	"os"
 	"os/user"
