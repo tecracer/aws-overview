@@ -14,15 +14,22 @@ import (
 
 var (
 	regions = []string{
-		"us-east-1",
-		"us-west-1",
-		"us-west-2",
+		"eu-north-1",
+		"ap-south-1",
+		"eu-west-3",
+		"eu-west-2",
 		"eu-west-1",
-		"eu-central-1",
-		"ap-southeast-1",
-		"ap-southeast-2",
+		"ap-northeast-2",
 		"ap-northeast-1",
 		"sa-east-1",
+		"ca-central-1",
+		"ap-southeast-1",
+		"ap-southeast-2",
+		"eu-central-1",
+		"us-east-1",
+		"us-east-2",
+		"us-west-1",
+		"us-west-2",
 	}
 	verbose, daemon                                                      bool
 	repeat                                                               int
@@ -33,6 +40,7 @@ var (
 	totalRdsNumber, totalOrRdsNumber, totalMyRdsNumber, totalMsRdsNumber int
 	totalLambdaNumber                                                    int
 	totalCfnNumber                                                       int
+	totalESNumber                                                        int
 	err                                                                  error
 )
 
@@ -78,6 +86,14 @@ func main() {
 					totalEC2Number += rTotal
 					totalEC2RunningNumber += rRunning
 					totalEC2RunningWindowsNumber += rWindows
+				}()
+
+				wg.Add(1)
+				go func() {
+					defer wg.Done()
+					// Get elasticsearch data
+					rEsTotal := listElasticsearchservice(region, verbose)
+					totalESNumber += rEsTotal
 				}()
 
 				wg.Add(1)
@@ -153,7 +169,7 @@ func main() {
 					log.Fatal("Cannot get S3 data: ", err)
 				}
 			}()
-
+			
 			wg.Wait()
 			logs.WithFields(logs.Fields{
 				"S3Buckets":         s3Number,
@@ -162,6 +178,7 @@ func main() {
 				"EC2RunningWindows": totalEC2RunningWindowsNumber,
 				"ELB":               totalElbNumber,
 				"ELBwithoutEC2":     totalElbWithoutEC2Number,
+				"ElasticsearchDomains:": totalESNumber,
 				"RDS":               totalRdsNumber,
 				"RDS_Oracle":        totalOrRdsNumber,
 				"RDS_MySQL":         totalMyRdsNumber,

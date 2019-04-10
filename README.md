@@ -6,6 +6,7 @@
 Available details are (number of):
 * EC2, EC2 Running instances, EC2 Windows running instances
 * ELB, ELB without assigned EC2 instances
+* Elasticsearch Domains
 * RDS, RDS MySQL/MSSQL/Oracle
 * CFN
 * Lambda functions
@@ -14,8 +15,8 @@ Available details are (number of):
 
 ## Installing
 
-* ``go get github.com/partamonov/aws-overview``
-* ``go install github.com/partamonov/aws-overview``
+* ``go get github.com/tecracer/aws-overview``
+* ``go install github.com/tecracer/aws-overview``
 
 For cross platform compilation:
 * ``env GOOS=windows GOARCH=amd64 go build``
@@ -35,3 +36,5 @@ Usage: aws-overview [-h] [-log-file=path] [-daemon=true] [-repeat-every=60] [oth
  -verbose=true/false:          [bool], if true prints details information about objects
  -machine-readable=true/false: [bool], if true convert output to Logstash format, false print json output
 ```
+
+Thank you for original script by partamonov.
